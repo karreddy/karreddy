@@ -1,0 +1,44 @@
+apply plugin: 'java-library'
+apply plugin: 'com.liferay.gradle'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    implementation 'com.liferay:com.liferay.portal.api:7.4.0'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+task clean {
+    doLast {
+        delete buildDir
+    }
+}
+
+task build {
+    dependsOn clean
+
+    doLast {
+        gradle jar
+    }
+}
+
+task test {
+    dependsOn build
+
+    useJUnitPlatform()
+
+    testClasses = sourceSets.main.test.classes
+}
+
+task run {
+    dependsOn build
+
+    doLast {
+        java -jar build/libs/my-project.jar
+    }
+}
