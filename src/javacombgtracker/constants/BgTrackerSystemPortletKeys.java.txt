@@ -1,0 +1,11 @@
+package com.bg.tracker.constants;
+
+/**
+ * @author DELL
+ */
+public class BgTrackerSystemPortletKeys {
+
+	public static final String BGTRACKERSYSTEM =
+		"com_bg_tracker_BgTrackerSystemPortlet";
+
+}
